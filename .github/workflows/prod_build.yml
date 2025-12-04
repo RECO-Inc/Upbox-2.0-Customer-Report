@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     environment: prod
-    runs-on: [self-hosted, macOS, ARM64]
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
