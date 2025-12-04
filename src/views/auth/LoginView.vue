@@ -10,6 +10,7 @@ import { useI18n } from 'vue-i18n'
 import { useNotificationStore } from '@/stores/notification'
 import { useUserStore } from '@/stores/user'
 import { useLoginSchema } from '@/schemas/auth.schema'
+import Version from "@/components/common/Version.vue";
 
 const router = useRouter()
 const { t } = useI18n()
@@ -110,6 +111,10 @@ const onSubmit = form.handleSubmit(async (values) => {
           </Button>
         </div>
       </form>
+
+      <div class="flex items-center justify-end">
+        <Version />
+      </div>
     </div>
   </div>
 </template>
