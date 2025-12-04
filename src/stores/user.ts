@@ -455,6 +455,9 @@ export const useUserStore = defineStore('user', () => {
     return axiosInstance
       .get<ApiResponse<MemberDTO>>(`/api/member/me`, {
         headers,
+        params: {
+          appCategory: "UPBOX_CUSTOMER", // 고객용
+        }
       })
       .then((res) => {
         if (res.data.errorMessage) {
