@@ -33,10 +33,10 @@ jobs:
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: |
-          pnpm build:prod || echo "BUILD_EXIT_CODE=$?" >> $GITHUB_ENV
+          pnpm build
 
       - name: slack-send failed
-        if: failure() && env.BUILD_EXIT_CODE != '2'
+        if: failure()
         uses: slackapi/slack-github-action@v1.24.0
         with:
           payload: |
