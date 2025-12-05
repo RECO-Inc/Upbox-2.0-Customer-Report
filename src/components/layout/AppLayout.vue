@@ -9,7 +9,7 @@ import AppHeader from "@/components/layout/AppHeader.vue";
     <AppSidebar />
     <SidebarInset>
       <AppHeader />
-      <main class="min-h-screen bg-base-20 pl-8 pr-10 pt-14">
+      <main class="min-h-screen bg-base-20 pl-8 pr-10 pt-14 pb-10">
         <router-view />
       </main>
     </SidebarInset>
