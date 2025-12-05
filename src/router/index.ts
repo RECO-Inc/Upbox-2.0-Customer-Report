@@ -17,21 +17,28 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/',
-    name: 'Dashboard',
-    component: () => import('@/views/dashboard/DashboardView.vue'),
-    meta: {
-      requiresAuth: true,
-      title: i18n.global.t('menu.dashboard'),
-    },
-  },
-  {
-    path: '/profile',
-    name: 'Profile',
-    component: () => import('@/views/dashboard/ProfileView.vue'),
-    meta: {
-      requiresAuth: true,
-      title: i18n.global.t('user.profile'),
-    },
+    name: 'Layout',
+    component: () => import('@/components/layout/AppLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'Dashboard',
+        component: () => import('@/views/report/EsgDashboard.vue'),
+        meta: {
+          requiresAuth: true,
+          title: i18n.global.t('menu.dashboard'),
+        },
+      },
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: () => import('@/views/dashboard/ProfileView.vue'),
+        meta: {
+          requiresAuth: true,
+          title: i18n.global.t('user.profile'),
+        },
+      },
+    ],
   },
   {
     path: '/:pathMatch(.*)*',

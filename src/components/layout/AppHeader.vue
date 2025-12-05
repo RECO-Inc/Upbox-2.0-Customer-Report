@@ -154,7 +154,7 @@ const navigateTo = (path: string) => {
   right: 0;
   height: 64px;
   background-color: var(--color-base-20);
-  padding: 0 24px;
+  padding: 0 3rem;
   display: flex;
   align-items: center;
   z-index: 10;

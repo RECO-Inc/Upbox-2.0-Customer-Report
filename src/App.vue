@@ -36,7 +36,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div id="app" class="min-h-screen bg-base-10 text-base-100">
+  <div id="app" class="min-h-screen bg-base-20 text-base-100">
     <RouterView />
     <Toaster position="top-right" richColors />
     <LoadingOverlay v-if="loadingStore.isLoading" />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, onMounted, watch} from "vue";
+import {onMounted, ref, watch} from "vue";
 import {useI18n} from "vue-i18n";
 import {useForm} from "vee-validate";
 import {useUserStore} from "@/stores/user";
@@ -8,10 +8,7 @@ import {AuthService} from "@/api/auth.service";
 import {MemberService} from "@/api/member.service";
 import {hashedPassword} from "@/utils/auth";
 import type {FileDTO} from "@/api/dto/FileDTO";
-import AppSidebar from "@/components/layout/AppSidebar.vue";
-import AppHeader from "@/components/layout/AppHeader.vue";
 import ProfileImage from "@/components/common/ProfileImage.vue";
-import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
@@ -112,108 +109,100 @@ const onSubmitPassword = form.handleSubmit(async (values) => {
 </script>
 
 <template>
-  <SidebarProvider>
-    <AppSidebar />
-    <SidebarInset>
-      <AppHeader />
-      <main class="min-h-screen px-4 py-8 pt-20 container mx-auto">
-        <div class="mx-auto max-w-2xl space-y-6">
-          <!-- User Information Card -->
-          <div class="rounded-lg border p-6 shadow-sm">
-            <h2 class="text-size-18 font-semibold">{{ t('user.userInformation') }}</h2>
-            <div class="mt-6 space-y-4">
-              <!-- Profile Image -->
-              <div class="flex justify-center">
-                <ProfileImage v-model="profileFileDTO" editable />
-              </div>
-
-              <!-- 읽기 전용 필드 -->
-              <div class="space-y-2">
-                <label class="text-size-14 font-medium">{{ t('auth.userId') }}</label>
-                <Input :model-value="userStore.userId" readonly />
-              </div>
-              <div class="space-y-2">
-                <label class="text-size-14 font-medium">UUID</label>
-                <Input :model-value="userStore.uuid" readonly class="font-mono text-size-12" />
-              </div>
-
-              <!-- 수정 가능 필드 -->
-              <div class="space-y-2">
-                <label class="text-size-14 font-medium">{{ t('user.name') }}</label>
-                <Input v-model="editableName" :placeholder="t('user.enterName')" />
-              </div>
-              <div class="space-y-2">
-                <label class="text-size-14 font-medium">{{ t('user.phoneNumber') }}</label>
-                <Input v-model="editablePhoneNumber" :placeholder="t('user.enterPhoneNumber')" />
-              </div>
-              <div class="space-y-2">
-                <label class="text-size-14 font-medium">{{ t('user.email') }}</label>
-                <Input v-model="editableEmail" type="email" :placeholder="t('user.enterEmail')" />
-              </div>
-              <div class="space-y-2">
-                <label class="text-size-14 font-medium">{{ t('user.memo') }}</label>
-                <Textarea v-model="editableMemo" :placeholder="t('user.enterMemo')" :rows="3" />
-              </div>
-
-              <Button class="w-full" @click="saveProfileInfo" :disabled="isSaving">
-                {{ isSaving ? t('common.saving') : t('user.saveProfile') }}
-              </Button>
-            </div>
-          </div>
-
-          <!-- Change Password Card -->
-          <div class="rounded-lg border p-6 shadow-sm">
-            <h2 class="text-size-18 font-semibold">{{ t('user.changePassword') }}</h2>
-            <form class="mt-6 space-y-4" @submit="onSubmitPassword">
-              <FormField v-slot="{ componentField }" name="currentPassword">
-                <FormItem>
-                  <FormLabel>{{ t('user.currentPassword') }}</FormLabel>
-                  <FormControl>
-                    <Input
-                      v-bind="componentField"
-                      type="password"
-                      :placeholder="t('user.enterCurrentPassword')"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              </FormField>
-
-              <FormField v-slot="{ componentField }" name="newPassword">
-                <FormItem>
-                  <FormLabel>{{ t('user.newPassword') }}</FormLabel>
-                  <FormControl>
-                    <Input
-                      v-bind="componentField"
-                      type="password"
-                      :placeholder="t('user.enterNewPassword')"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              </FormField>
-
-              <FormField v-slot="{ componentField }" name="confirmPassword">
-                <FormItem>
-                  <FormLabel>{{ t('user.confirmPassword') }}</FormLabel>
-                  <FormControl>
-                    <Input
-                      v-bind="componentField"
-                      type="password"
-                      :placeholder="t('user.confirmNewPassword')"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              </FormField>
-
-              <Button class="w-full" type="submit">
-                {{ t('user.changePassword') }}
-              </Button>
-            </form>
-          </div>
+  <div class="mx-auto max-w-2xl space-y-6">
+    <!-- User Information Card -->
+    <div class="rounded-lg border p-6 shadow-sm">
+      <h2 class="text-size-18 font-semibold">{{ t('user.userInformation') }}</h2>
+      <div class="mt-6 space-y-4">
+        <!-- Profile Image -->
+        <div class="flex justify-center">
+          <ProfileImage v-model="profileFileDTO" editable />
         </div>
-      </main>
-    </SidebarInset>
-  </SidebarProvider>
+
+        <!-- 읽기 전용 필드 -->
+        <div class="space-y-2">
+          <label class="text-size-14 font-medium">{{ t('auth.userId') }}</label>
+          <Input :model-value="userStore.userId" readonly />
+        </div>
+        <div class="space-y-2">
+          <label class="text-size-14 font-medium">UUID</label>
+          <Input :model-value="userStore.uuid" readonly class="font-mono text-size-12" />
+        </div>
+
+        <!-- 수정 가능 필드 -->
+        <div class="space-y-2">
+          <label class="text-size-14 font-medium">{{ t('user.name') }}</label>
+          <Input v-model="editableName" :placeholder="t('user.enterName')" />
+        </div>
+        <div class="space-y-2">
+          <label class="text-size-14 font-medium">{{ t('user.phoneNumber') }}</label>
+          <Input v-model="editablePhoneNumber" :placeholder="t('user.enterPhoneNumber')" />
+        </div>
+        <div class="space-y-2">
+          <label class="text-size-14 font-medium">{{ t('user.email') }}</label>
+          <Input v-model="editableEmail" type="email" :placeholder="t('user.enterEmail')" />
+        </div>
+        <div class="space-y-2">
+          <label class="text-size-14 font-medium">{{ t('user.memo') }}</label>
+          <Textarea v-model="editableMemo" :placeholder="t('user.enterMemo')" :rows="3" />
+        </div>
+
+        <Button class="w-full" @click="saveProfileInfo" :disabled="isSaving">
+          {{ isSaving ? t('common.saving') : t('user.saveProfile') }}
+        </Button>
+      </div>
+    </div>
+
+    <!-- Change Password Card -->
+    <div class="rounded-lg border p-6 shadow-sm">
+      <h2 class="text-size-18 font-semibold">{{ t('user.changePassword') }}</h2>
+      <form class="mt-6 space-y-4" @submit="onSubmitPassword">
+        <FormField v-slot="{ componentField }" name="currentPassword">
+          <FormItem>
+            <FormLabel>{{ t('user.currentPassword') }}</FormLabel>
+            <FormControl>
+              <Input
+                v-bind="componentField"
+                type="password"
+                :placeholder="t('user.enterCurrentPassword')"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        </FormField>
+
+        <FormField v-slot="{ componentField }" name="newPassword">
+          <FormItem>
+            <FormLabel>{{ t('user.newPassword') }}</FormLabel>
+            <FormControl>
+              <Input
+                v-bind="componentField"
+                type="password"
+                :placeholder="t('user.enterNewPassword')"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        </FormField>
+
+        <FormField v-slot="{ componentField }" name="confirmPassword">
+          <FormItem>
+            <FormLabel>{{ t('user.confirmPassword') }}</FormLabel>
+            <FormControl>
+              <Input
+                v-bind="componentField"
+                type="password"
+                :placeholder="t('user.confirmNewPassword')"
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        </FormField>
+
+        <Button class="w-full" type="submit">
+          {{ t('user.changePassword') }}
+        </Button>
+      </form>
+    </div>
+  </div>
 </template>
