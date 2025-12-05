@@ -396,4 +396,36 @@ export default {
     invalidPassword: 'Password must be at least 8 characters',
     passwordsDoNotMatch: 'Passwords do not match',
   },
+  esgDashboard: {
+    title: 'UPBOX Customer ECO (ESG) Report',
+    companyInfo: '{company} | As of {date}',
+    filter: {
+      title: 'Please select waste type filter',
+    },
+    impact: {
+      title: 'Cumulative Environmental Impact for {date}',
+      co2Reduction: 'CO₂ Reduction',
+      waterSaving: 'Water Savings',
+      energyRecovery: 'Energy Recovery',
+      recyclingRate: 'Recycling Rate',
+      greeningEffect: 'Greening Effect',
+      trees: '{count} trees',
+      carReductionEffect: 'Car Reduction Effect',
+      cars: '{count} cars',
+      impactCriteria: 'Impact Calculation Criteria',
+      co2ReductionDesc: 'CO₂ equivalent reduced through non-incineration treatment of food waste and plastic resource recycling.',
+      waterSavingDesc: 'Amount of water saved through resource circulation treatment instead of incineration and landfill processes.',
+      greeningCarDesc: 'Values converted based on annual CO₂ absorption of pine trees and annual emissions of passenger cars.',
+    },
+    wasteCollection: {
+      title: 'Waste Collection Status for {date}',
+      description: 'Food waste is converted at 1L=1kg, and all other waste is in kg units.',
+      dataArea: 'Data area',
+    },
+    yoyAnalysis: {
+      title: 'Year-over-Year Analysis for {date} (YoY)',
+      description: 'Food waste is converted at 1L=1kg, and all other waste is in kg units.',
+      dataArea: 'Data area',
+    },
+  },
 }

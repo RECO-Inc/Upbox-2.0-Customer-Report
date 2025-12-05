@@ -396,4 +396,36 @@ export default {
     invalidPassword: '비밀번호는 8자 이상이어야 합니다',
     passwordsDoNotMatch: '비밀번호가 일치하지 않습니다',
   },
+  esgDashboard: {
+    title: '업박스 고객사 에코(ESG) 리포트',
+    companyInfo: '{company} | {date} 기준',
+    filter: {
+      title: '폐기물 종류 필터를 선택해주세요',
+    },
+    impact: {
+      title: '{date} 누적 환경 임팩트',
+      co2Reduction: '이산화탄소 감축량',
+      waterSaving: '물 절약량',
+      energyRecovery: '에너지 회수량',
+      recyclingRate: '재활용률',
+      greeningEffect: '녹화 효과',
+      trees: '{count} 그루',
+      carReductionEffect: '승용차 감축 효과',
+      cars: '{count}대',
+      impactCriteria: '임팩트 산정 기준',
+      co2ReductionDesc: '음식물류 폐기물의 비소각 처리 및 폐플라스틱 자원화를 통해 감축된 CO₂ 환산량입니다.',
+      waterSavingDesc: '폐기물의 소각 및 매립 공정 대신 자원순환 처리 시 절약되는 물의 양입니다.',
+      greeningCarDesc: '감축된 이산화탄소 양을 소나무 연간 흡수량 및 승용차 연간 배출량 기준으로 환산한 값입니다.',
+    },
+    wasteCollection: {
+      title: '{date} 폐기물 수거 현황',
+      description: '음식물류는 1L=1kg으로 환산되었으며, 그 외 모든 폐기물은 kg 단위입니다.',
+      dataArea: 'Data area',
+    },
+    yoyAnalysis: {
+      title: '{date} 전년 동월 대비 증감 분석 (YoY)',
+      description: '음식물류는 1L=1kg으로 환산되었으며, 그 외 모든 폐기물은 kg 단위입니다.',
+      dataArea: 'Data area',
+    },
+  },
 }
